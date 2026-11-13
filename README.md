@@ -45,14 +45,50 @@ Below is the structured course outline along with real-world scenarios and Pytho
 | **12. Complex Engineering Problem** | Designing an industrial robotic arm (motor behavior, efficiency, reach). | Multi-variable dynamic simulations |
 
 ---
-## 🎯 Assingment:
-  ##assingment submitted as ipynb file,
-  
-| **Lab Assignment -1 : NumPy Scalar, Matrix, and Vector Operations
-  assingment 1 submitted as SIM_Lab1_Md_Fahad_Rahman_0432320005101071(B1).ipynb
 
-| **Lab Assignment -2 : Unique Matrix Value Investigation
-  assingment 1 submitted as SIM_Lab2_Md_Fahad_Rahman_0432320005101071(B1).ipynb
+## 📁 Repository Structure
 
-                    
+```text
+CSE-413-Simulation-Modeling-Lab/
+├── labs/
+│   ├── Lab-01/
+│   │   └── SIM_Lab1_Md_Fahad_Rahman_0432320005101071(B1).ipynb
+│   └── Lab-02/
+│       └── SIM_Lab2_Md_Fahad_Rahman_0432320005101071(B1).ipynb
+├── project/
+│   ├── src/                 # Source code (simulation engine, physics, experiments)
+│   ├── tests/               # Test suites (TOI, event-cap, benchmark, CSV, rendering)
+│   ├── results/             # Simulation datasets and experiment CSV outputs
+│   ├── reports/
+│   │   └── figures/         # Generated graphs, analytical plots, and visual assets
+│   ├── docs/                # Project documentation and specifications
+│   └── README.md            # Project overview and instructions
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## 🎯 Lab Assignments
+
+| Lab | Topic | Notebook Link |
+| :--- | :--- | :--- |
+| **Lab 01** | NumPy Scalar, Matrix, and Vector Operations | [Lab-01 Notebook](labs/Lab-01/SIM_Lab1_Md_Fahad_Rahman_0432320005101071(B1).ipynb) |
+| **Lab 02** | Unique Matrix Value Investigation | [Lab-02 Notebook](labs/Lab-02/SIM_Lab2_Md_Fahad_Rahman_0432320005101071(B1).ipynb) |
+
+---
+
+## 🚀 Course Project: Bouncing Ball Simulator (V4.0)
+
+A physically accurate discrete-time bouncing ball simulator implementing:
+* Upward-positive vertical coordinate system ($y = 0$ ground, $y = r$ contact).
+* Semi-implicit Euler numerical integration ($v_{\text{new}} = v - g \cdot dt$, $y_{\text{new}} = y + v_{\text{new}} \cdot dt$).
+* Sub-timestep Time-of-Impact (TOI) quadratic collision detection and velocity restitution.
+* Resting/grazing contact settling with cumulative energy dissipation tracking.
+* Comprehensive test suite: TOI accuracy, event-cap robustness, rendering independence (10 vs 60 FPS), and benchmark performance.
+* Experiment logging, automated CSV reporting, and figure generation.
+
+See the [Project Directory](project/) for detailed documentation, source code, and validation results.
+
 
