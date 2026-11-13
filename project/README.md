@@ -72,5 +72,6 @@ Generated figure:
 ---
 
 ## 📖 Documentation
+* Presentation & Viva Defense Guide: [docs/PRESENTATION_DEFENSE_GUIDE.md](docs/PRESENTATION_DEFENSE_GUIDE.md)
 * Technical Report: [reports/TECHNICAL_REPORT.md](reports/TECHNICAL_REPORT.md)
 * Consolidated V4.0 Specification: [docs/SPECIFICATION_V4.md](docs/SPECIFICATION_V4.md)
