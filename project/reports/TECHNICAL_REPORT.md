@@ -108,15 +108,20 @@ Below is the generated validation plot displaying position trajectory, velocity 
 
 ## 4. Benchmark Performance & Verification Tests
 
-All requirements specified under Section 7 of the V4.0 specification were tested with unit tests in `project/tests/`:
+All requirements specified under the V4.0 specification were tested with an exhaustive test suite of **21 automated unit tests** in `project/tests/`:
 
-| Test Suite | Metric / Verification Target | Status |
-| :--- | :--- | :--- |
-| **`test_toi.py`** | First collision time matches $t = \sqrt{2h/g}$ ($< 1.5 dt$); impact position equals ball radius ($y = r$). | **PASSED** |
-| **`test_event_cap.py`** | Pathological chatter (Zeno paradox / low restitution) completes in $< 1.0$s without hanging. | **PASSED** |
-| **`test_rendering_indep.py`** | 10 FPS and 60 FPS decoupled loops yield identical physical trajectories and collision records. | **PASSED** |
-| **`test_csv_output.py`** | Verified consistent column schema, no NaN values, and single row per parameter in experiment sweeps. | **PASSED** |
-| **`test_benchmark.py`** | Benchmarked 30-second continuous simulation ($e = 1.0$) on reference machine. | **PASSED** |
+| Test Module | Tests | Metric / Verification Target | Status |
+| :--- | :---: | :--- | :---: |
+| **`test_coordinates_and_euler.py`** | 3 | Upward-positive coordinates ($y_0 = h_0 + r$), $-g$ acceleration sign, semi-implicit Euler discrete equation accuracy. | **PASSED** |
+| **`test_toi.py`** | 3 | First collision time matches analytical $t = \sqrt{2h/g}$ ($< 1.5 dt$), contact position $y = r$, quadratic sub-step solver accuracy. | **PASSED** |
+| **`test_resting_contact.py`** | 3 | Settle threshold transition, zero velocity clamping, no duplicate collision events while resting, kinetic energy dissipation accounting. | **PASSED** |
+| **`test_energy_conservation.py`** | 3 | $PE, KE, \Delta E_{\text{collision}}$ formula verification, bounded total energy accounting, numerical error scaling with $dt$. | **PASSED** |
+| **`test_event_cap.py`** | 2 | Pathological chatter (Zeno paradox / ultra-low restitution) finishes in $< 1.0$s without hanging, event cap loop protection. | **PASSED** |
+| **`test_rendering_indep.py`** | 1 | 10 FPS and 60 FPS decoupled loops yield identical physical trajectories and collision records. | **PASSED** |
+| **`test_experiment_limits.py`** | 3 | 30s cap on elastic ($e=1.0$) runs reporting `"Did not settle"`, finite settling reporting for $e<1.0$, CSV clean overwrite. | **PASSED** |
+| **`test_csv_output.py`** | 2 | Verified consistent column schema, no NaN values, and single row per parameter in experiment sweeps. | **PASSED** |
+| **`test_benchmark.py`** | 1 | Benchmarked 30-second continuous simulation ($e = 1.0$) on reference machine. | **PASSED** |
+| **TOTAL** | **21** | **Full V4.0 Specification Verification** | **21 / 21 PASSED** |
 
 ### 4.1 Hardware Benchmark Results (Reference Machine)
 * **Processor / System:** Intel64 GenuineIntel

@@ -56,13 +56,14 @@ CSE-413-Simulation-Modeling-Lab/
 │   └── Lab-02/
 │       └── SIM_Lab2_Md_Fahad_Rahman_0432320005101071(B1).ipynb
 ├── project/
-│   ├── src/                 # Source code (simulation engine, physics, experiments)
-│   ├── tests/               # Test suites (TOI, event-cap, benchmark, CSV, rendering)
-│   ├── results/             # Simulation datasets and experiment CSV outputs
-│   ├── reports/
-│   │   └── figures/         # Generated graphs, analytical plots, and visual assets
-│   ├── docs/                # Project documentation and specifications
-│   └── README.md            # Project overview and instructions
+│   ├── main.py              # CLI entry point for custom parameter simulations
+│   ├── src/                 # Physics engine, state manager, live GUI visualizer
+│   ├── tests/               # 21 automated unit tests (TOI, energy, benchmark, etc.)
+│   ├── results/             # Datasets (simulation_data.csv & experiment CSVs)
+│   ├── reports/             # Technical report & generated figures (validation.png)
+│   ├── docs/                # V4.0 specification & presentation defense guide
+│   └── README.md            # Project technical overview
+├── run.bat                  # One-click Windows interactive launcher
 ├── .gitignore
 ├── requirements.txt
 └── README.md
@@ -82,13 +83,19 @@ CSE-413-Simulation-Modeling-Lab/
 ## 🚀 Course Project: Bouncing Ball Simulator (V4.0)
 
 A physically accurate discrete-time bouncing ball simulator implementing:
-* Upward-positive vertical coordinate system ($y = 0$ ground, $y = r$ contact).
-* Semi-implicit Euler numerical integration ($v_{\text{new}} = v - g \cdot dt$, $y_{\text{new}} = y + v_{\text{new}} \cdot dt$).
-* Sub-timestep Time-of-Impact (TOI) quadratic collision detection and velocity restitution.
-* Resting/grazing contact settling with cumulative energy dissipation tracking.
-* Comprehensive test suite: TOI accuracy, event-cap robustness, rendering independence (10 vs 60 FPS), and benchmark performance.
-* Experiment logging, automated CSV reporting, and figure generation.
+* **Upward-positive coordinates**: Ground at $y = 0$, contact at $y = r$, upward velocity positive, $-g$ gravity.
+* **Semi-implicit Euler integration**: Symplectic scheme ensuring phase-space stability without energy explosion.
+* **Exact Time-of-Impact (TOI)**: Analytical quadratic root solver detecting collisions at sub-millisecond precision without floor tunneling.
+* **Resting contact mechanics**: Settling velocity threshold ($0.08\text{ m/s}$) preventing Zeno paradox infinite chatter.
+* **Decoupled rendering**: Bitwise physics invariance across different visual frame rates (10 vs 60 FPS).
+* **21 Automated Verification Tests**: All passing covering TOI, energy conservation, event cap, benchmarks, and CSV integrity.
+* **One-Click Windows Launcher**: Double-click [run.bat](run.bat) to launch the live 2D GUI, run simulations, or execute tests.
 
-See the [Project Directory](project/) for detailed documentation, source code, and validation results.
+### 📚 Documentation & Guides
+* **Oral Defense & Viva Guide:** [PRESENTATION_DEFENSE_GUIDE.md](project/docs/PRESENTATION_DEFENSE_GUIDE.md)
+* **Technical Report:** [TECHNICAL_REPORT.md](project/reports/TECHNICAL_REPORT.md)
+* **Validation Plot:** [validation.png](project/reports/figures/validation.png)
+* **Consolidated V4.0 Specification:** [SPECIFICATION_V4.md](project/docs/SPECIFICATION_V4.md)
+* **Project README:** [project/README.md](project/README.md)
 
 

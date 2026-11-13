@@ -8,25 +8,32 @@ A physics-based discrete-time numerical simulation of a bouncing ball using semi
 
 ```text
 project/
+├── main.py                 # CLI entry point with customizable parameters & flags
 ├── src/
 │   ├── __init__.py
 │   ├── physics.py          # Semi-implicit Euler integration & TOI quadratic solver
 │   ├── simulator.py        # Simulation engine, state management, energy accounting
 │   ├── experiments.py      # Automated parameter sweep experiments
-│   └── visualization.py    # Matplotlib plots, figures, and validation graphs
+│   ├── visualization.py    # Matplotlib plots, figures, and validation graphs
+│   └── animation.py        # Live interactive 2D GUI visualizer
 ├── tests/
 │   ├── __init__.py
-│   ├── test_toi.py                 # Time-of-Impact analytical & boundary validation
-│   ├── test_event_cap.py           # Pathological collision handling
-│   ├── test_csv_output.py          # CSV format and column consistency
-│   ├── test_rendering_indep.py     # 10 FPS vs 60 FPS physics decoupling
-│   └── test_benchmark.py           # 30-second simulation performance benchmark
+│   ├── test_coordinates_and_euler.py # Upward-positive convention & Euler step
+│   ├── test_toi.py                   # Time-of-Impact analytical & boundary validation
+│   ├── test_resting_contact.py       # Settling threshold & zero velocity locking
+│   ├── test_energy_conservation.py   # Energy accounting & dt convergence
+│   ├── test_event_cap.py             # Pathological chatter handling & loop cap
+│   ├── test_rendering_indep.py       # 10 FPS vs 60 FPS physics decoupling
+│   ├── test_experiment_limits.py     # 30-second cap, e=1.0 reporting & CSV overwrite
+│   ├── test_csv_output.py            # CSV schema & parameter row mapping
+│   └── test_benchmark.py             # 30-second simulation performance benchmark
 ├── results/                # Output datasets (simulation_data.csv & experiment CSVs)
 ├── reports/
 │   ├── TECHNICAL_REPORT.md # Full technical report with theory, equations, & validation
 │   └── figures/            # Output graphs (validation.png, etc.)
 └── docs/
-    └── SPECIFICATION_V4.md # Consolidated V4.0 Project Specification
+    ├── PRESENTATION_DEFENSE_GUIDE.md # Oral defense & viva examination guide
+    └── SPECIFICATION_V4.md           # Consolidated V4.0 Project Specification
 ```
 
 ---
@@ -47,8 +54,12 @@ As required by Section 7 of the V4.0 specification, benchmarking was performed o
 pip install -r ../requirements.txt
 ```
 
-### 2. Run Test Suite
+### 2. Run Test Suite (21 Tests)
 ```bash
+# From repository root:
+python -m pytest project/tests -v
+
+# Or from project/ directory:
 python -m pytest tests/ -v
 ```
 
